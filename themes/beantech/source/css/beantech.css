@@ -849,6 +849,17 @@ body {
 .one-tag-list .post-preview > a .post-subtitle {
   font-size: 12px;
 }
+
+.one-tag-list .post-preview > a div.post-thumbnail {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease-in;
+}
 .one-tag-list .post-preview > .post-meta {
   position: absolute;
   right: 5px;
@@ -867,6 +878,16 @@ body {
   }
   .one-tag-list .post-preview > a > .post-subtitle {
     font-size: 14px;
+  }
+  .one-tag-list .post-preview > a div.post-thumbnail {
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.3s ease-in;
   }
   .one-tag-list .post-preview .post-meta {
     font-size: 18px;
