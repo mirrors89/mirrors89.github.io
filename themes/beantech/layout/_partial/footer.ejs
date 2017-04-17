@@ -59,12 +59,12 @@
 
                 <% if (config.email_address) { %>
                     <li>
-	                    <%- mail_to(config.email_address,
-                            '<span class="fa-stack fa-lg">' +
-                                '<i class="fa fa-circle fa-stack-2x"></i>' +
-                                '<i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>' +
-                            '</span>'
-                        ) %>
+                        <a href="mailto:<%= config.email_address %>">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
                     </li>
                 <% } %>
 
