@@ -35,19 +35,21 @@
 
     <link rel="stylesheet" href="/css/signature.css">
 
-    <link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/toc.css">
+
+	<link rel="stylesheet" href="/css/share.css">
 
     <!-- Custom Fonts -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
     <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- jQuery -->
+	<script src="/js/jquery.min.js"></script>
 
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <!-- Bootstrap Core JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+	<script src="/js/hux-blog.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -209,7 +211,7 @@
 
 <div class="post-preview">
 
-    <a href="/2017/03/18/hexo-theme-beantech/">
+    <a href="/2017/03/hexo-theme-beantech/">
         <h2 class="post-title">
             [Hexo] Theme BeanTech
         </h2>
@@ -279,15 +281,13 @@ I publish the whole ......
         
 
         
-            <p>Welcome to my blog.</p>
+            <p>초보 개발자가 시작하는 블로그 
+lee01494@gmail.com</p>
         
 
         <!-- SNS Link -->
         <ul class="list-inline">
             
-            
-            
-
             
 
             
@@ -313,10 +313,24 @@ I publish the whole ......
             
             
             
-            
+
+	        
+                <li>
+                    <a href="mailto:lee01494@naver.com">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+	        
         </ul>
     </div>
 </section>
+        <hr>
+    
+        <!-- Categories -->
+
         <hr>
     
         
@@ -325,7 +339,7 @@ I publish the whole ......
     <ul>
       
         <li>
-          <a href="/2017/03/18/hexo-theme-beantech/">[Hexo] Theme BeanTech</a>
+          <a href="/2017/03/hexo-theme-beantech/">[Hexo] Theme BeanTech</a>
         </li>
       
     </ul>
@@ -333,15 +347,15 @@ I publish the whole ......
 
         <hr>
     
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
+        <!-- Friends Blog -->
 
-        <hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
     
-        <!-- Categories -->
+        <li><a href="http://javacafe-study.github.io/blog" target="_blank">자바카페 기술블로그</a></li>
+    
+</ul>
 
         <hr>
     
@@ -361,10 +375,6 @@ I publish the whole ......
                 <ul class="list-inline text-center">
                 
                 
-                
-
-                
-
                 
                     <li>
                         <a target="_blank" href="https://www.facebook.com/keeseung.lee.7">
@@ -389,33 +399,28 @@ I publish the whole ......
 
                 
 
+                
+                    <li>
+                        <a href="mailto:lee01494@naver.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; Keeseung Lee 2017 
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> 
-                    <span style="display: inline-block; margin: 0 5px;">
-                    </span>
-                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=mirrors89&repo=mirros89.github.io&type=star&count=true" >
-                    </iframe>
+                    Powered by <a href="//hexo.io/" target="_blank">Hexo.</a>
+                    Theme by <a href="http://huangxuan.me" target="_blank">Hux</a>
                 </p>
             </div>
         </div>
     </div>
 </footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
 
 
 <!-- async load function -->
@@ -489,13 +494,6 @@ I publish the whole ......
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
 </script>
-
-
-
-
-<!-- Baidu Tongji -->
-
-
 
 
 

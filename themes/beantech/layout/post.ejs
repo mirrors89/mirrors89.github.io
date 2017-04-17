@@ -13,9 +13,12 @@ layout: layout
                 post-container">
 
                 <%- page.content %>
-                
 
-                <hr>
+
+
+                <div class="article-footer">
+		            <%- partial('share', { page: page }) %>
+                </div>
                 <!-- Pager -->
                 <ul class="pager">
                     <% if (page.prev){ %>

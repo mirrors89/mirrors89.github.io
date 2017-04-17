@@ -24,28 +24,6 @@
                         </a>
                     </li>
                 <% } %>
-                <% if (config.zhihu_username) { %>
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/<%= config.zhihu_username %>">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                <% } %>
-
-                <% if (config.weibo_username) { %>
-                    <li>
-                        <a target="_blank" href="http://weibo.com/<%= config.weibo_username %>">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                <% } %>
-
                 <% if (config.facebook_username) { %>
                     <li>
                         <a target="_blank" href="https://www.facebook.com/<%= config.facebook_username %>">
@@ -79,33 +57,28 @@
                     </li>
                 <% } %>
 
+                <% if (config.email_address) { %>
+                    <li>
+	                    <%- mail_to(config.email_address,
+                            '<span class="fa-stack fa-lg">' +
+                                '<i class="fa fa-circle fa-stack-2x"></i>' +
+                                '<i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>' +
+                            '</span>'
+                        ) %>
+                    </li>
+                <% } %>
+
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; <%= config.author %> <%= new Date().getFullYear() %> 
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> 
-                    <span style="display: inline-block; margin: 0 5px;">
-                    </span>
-                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=mirrors89&repo=mirros89.github.io&type=star&count=true" >
-                    </iframe>
+                    Powered by <a href="//hexo.io/" target="_blank">Hexo.</a>
+                    Theme by <a href="http://huangxuan.me" target="_blank">Hux</a>
                 </p>
             </div>
         </div>
     </div>
 </footer>
-
-<!-- jQuery -->
-<%- js('js/jquery.min.js') %>
-
-<!-- Bootstrap Core JavaScript -->
-<%- js('js/bootstrap.min.js') %>
-
-<!-- Custom Theme JavaScript -->
-<%- js('js/hux-blog.min.js') %>
 
 
 <!-- async load function -->
@@ -181,23 +154,3 @@
 </script>
 
 <% } %>
-
-
-<!-- Baidu Tongji -->
-<% if (config.ba_track_id) { %>
-<script>
-    // dynamic User by Hux
-    var _baId = '<%= config.ba_track_id %>';
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<% } %>
-
-

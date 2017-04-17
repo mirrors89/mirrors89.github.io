@@ -33,27 +33,6 @@
                     </a>
                 </li>
             <% } %>
-            <% if (config.zhihu_username) { %>
-                <li>
-                    <a target="_blank" href="https://www.zhihu.com/people/<%= config.zhihu_username %>">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                        </span>
-                    </a>
-                </li>
-            <% } %>
-
-            <% if (config.weibo_username) { %>
-                <li>
-                    <a target="_blank" href="http://weibo.com/<%= config.weibo_username %>">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            <% } %>
 
             <% if (config.facebook_username) { %>
                 <li>
@@ -77,7 +56,6 @@
                 </li>
             <% } %>
             
-            
             <% if (config.linkedin_username) { %>
                 <li>
                     <a target="_blank"  href="https://www.linkedin.com/in/<%= config.linkedin_username %>">
@@ -88,6 +66,17 @@
                     </a>
                 </li>
             <% } %>
+
+	        <% if (config.email_address) { %>
+                <li>
+                    <a href="mailto:<%= config.email_address %>">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+	        <% } %>
         </ul>
     </div>
 </section>
