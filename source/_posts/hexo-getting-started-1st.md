@@ -21,7 +21,6 @@ categories:
 
 
 # 시작전 준비 사항
----
 - [Node.js](https://nodejs.org/ko/)
 - [Git](https://git-scm.com/) (해당 포스팅에서는 Git 사용법은 다루지 않습니다.)
 - [Github](https://github.com) 계정
@@ -32,7 +31,6 @@ npm install -g hexo-cli
 ```
 
 # 블로그 프로젝트 생성
----
 먼저 Github repository를 만듭니다.
 repository 이름은 (Github username).github.io로 만듭시다.
 repository 이름이 블로그 주소가 됩니다.
@@ -53,7 +51,6 @@ npm install
 
 
 # 서버 실행
----
 ```bash
 hexo server
 ```
