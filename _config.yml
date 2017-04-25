@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Mirror's Blog
-subtitle: Tech Blog
-author: Keeseung Lee
+title: Newbie's Blog
+subtitle:
+author: Keeseung
 language: ko
 timezone: Asia/Seoul
 
@@ -15,90 +15,6 @@ url: https://mirrors89.github.io       # Note: don't forget to modify the CNAME 
 root: /
 permalink: :year/:month/:title/
 permalink_defaults:
-
-#Custom Setting Start
-
-# Site settings
-SEOTitle: Mirror's Blog
-email: lee01494@gmail.com
-description: ""
-keyword: ""
-header-img: img/header_img/home-bg-2-dark.png
-signature: false #show signature
-signature-img: img/signature/BeanTechSign-white.png 
-
-
-# SNS settings
-RSS: false
-github_username:    mirrors89
-# twitter_username:
-facebook_username:  keeseung.lee.7
-#linkedin_username:
-email_address: lee01494@gmail.com
-
-# Build settings
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
-
-
-# Disqus settings
-disqus_username: mirrors89
-
-# Duoshuo settings
-# duoshuo_username: kaijun
-# Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: false                     # set to false if you want to use Comment without Sharing
-
-
-# Analytics settings
-# Baidu Analytics
-# ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-# Google Analytics
-ga_track_id: 'UA-XXXXXXXX-X'          # Format: UA-xxxxxx-xx
-ga_domain: yoursite
-
-
-# Sidebar settings
-sidebar: true                       # whether or not using Sidebar.
-sidebar-about-description: "초보 개발자가 시작하는 블로그 \nlee01494@gmail.com"
-sidebar-avatar: img/profile.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
-widgets:
-#- featured-tags
-- short-about
-- category
-- recent-posts
-- friends-blog
-#- archive
-
-# widget behavior
-## Archive
-archive_type: 'monthly'
-show_count: true
-
-
-# Miscellaneous
-miscellaneous:
-    open_graph: # see http://ogp.me
-        fb_app_id:
-        fb_admins:
-        twitter_id:
-        google_plus:
-
-
-## Featured Tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
-## Friends
-friends: [
-    {
-        title: "자바카페 기술블로그",
-        href: "http://javacafe-study.github.io/blog"
-    }
-]
-#Custom Setting End
-
-
 
 # Directory
 source_dir: source
@@ -130,7 +46,6 @@ highlight:
 default_category: uncategorized
 category_map:
 tag_map:
-home_posts_tag: true # show posts tags
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -164,11 +79,19 @@ markdown:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: beantech
+theme: overdose
 
 #sitemap
 sitemap:
   path: sitemap.xml
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id:
+        google_plus:
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -176,3 +99,10 @@ deploy:
   type: git
   repository: https://github.com/mirrors89/mirrors89.github.io.git
   branch: master
+
+
+
+
+
+
+

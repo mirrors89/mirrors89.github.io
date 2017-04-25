@@ -5,7 +5,8 @@ date: 2017-04-17 13:58:13
 subtitle: "자! 이제 시작이야."
 header-img:
 tags: 잡담
-catagories:
+categories:
+- 일상
 - 잡담
 ---
 이제부터 개발 관련 글을 계속 올릴 예정입니다.
