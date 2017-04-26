@@ -95,4 +95,9 @@ deploy:
 # Disqus settings
 disqus_shortname: mirrors89
 
+# RSS settings
+feed:
+  type: atom
+  path: atom.xml
+  limit: 10
 
