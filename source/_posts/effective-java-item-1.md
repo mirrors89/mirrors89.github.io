@@ -1,7 +1,7 @@
 ---
 title: "[EFFECTIVE JAVA] Item 1 생성자 대신 정적 팩터리 메서드를 고려하라"
 catalog: true
-date: 2021-01-28
+date: 2021-01-27
 subtitle: ""
 header-img:
 tags:

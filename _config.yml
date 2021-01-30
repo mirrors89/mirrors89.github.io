@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Newbie's Blog
-subtitle:
+title: Blog Blog
+subtitle: 하나씩 천천히
 author: Keeseung
 language: ko
 timezone: Asia/Seoul
@@ -79,7 +79,7 @@ markdown:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: overdose
+theme: cactus
 
 #sitemap
 sitemap:

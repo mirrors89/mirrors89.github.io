@@ -3,7 +3,6 @@ title: "이제서야 시작하는 블로깅"
 catalog: true
 date: 2017-04-17 13:58:13
 subtitle: "자! 이제 시작이야."
-header-img:
 tags: 잡담
 categories:
 - 일상
