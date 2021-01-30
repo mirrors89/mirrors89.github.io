@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <url>
-        <loc>https://mirrors89.github.io</loc>
+        <loc>https://mirrors89.github.io/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
+
     <url>
-        <loc>https://mirrors89.github.io/2021/01/effective-java-item-1/</loc>
-        <lastmod>2021-01-28T14:06:29.158Z</lastmod>
+        <loc>https://mirrors89.github.io/2017/04/hexo-getting-started-1st/</loc>
+        <lastmod>2021-01-30T06:19:15.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://mirrors89.github.io/2017/04/first-post-with-blog/</loc>
-        <lastmod>2021-01-28T14:06:29.158Z</lastmod>
+        <loc>https://mirrors89.github.io/2021/01/effective-java-item-1/</loc>
+        <lastmod>2021-01-30T06:19:15.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,15 +26,15 @@
 
     <url>
         <loc>https://mirrors89.github.io/2021/01/effective-java-item-2/</loc>
-        <lastmod>2021-01-28T14:06:29.158Z</lastmod>
+        <lastmod>2021-01-30T06:19:15.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://mirrors89.github.io/2017/04/hexo-getting-started-1st/</loc>
-        <lastmod>2021-01-28T14:06:29.158Z</lastmod>
+        <loc>https://mirrors89.github.io/2017/04/first-post-with-blog/</loc>
+        <lastmod>2021-01-30T06:19:15.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
