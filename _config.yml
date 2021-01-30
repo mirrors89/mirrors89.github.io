@@ -89,7 +89,7 @@ sitemap:
 deploy:
   type: git
   repository: https://github.com/mirrors89/mirrors89.github.io.git
-  branch: master
+  branch: gh-pages
 
 # Disqus settings
 disqus_shortname: mirrors89
