@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="싱글턴이란? 인스턴스를 오직 하나만 생성할 수 있는 클래스 함수와 같은 무상태(stateless) 객체나 설계상 유일해야 하는 시스템 컴포넌트 등  클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다. 싱글턴을 mock 구현으로 대체할 수 없기 때문  싱글턴을 만드는 방식public static 멤버가 final 필드인 방식1234public class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라">
+<meta property="og:url" content="https://mirrors89.github.io/2021/01/effective-java-item-3/index.html">
+<meta property="og:site_name" content="Blog Blog">
+<meta property="og:description" content="싱글턴이란? 인스턴스를 오직 하나만 생성할 수 있는 클래스 함수와 같은 무상태(stateless) 객체나 설계상 유일해야 하는 시스템 컴포넌트 등  클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다. 싱글턴을 mock 구현으로 대체할 수 없기 때문  싱글턴을 만드는 방식public static 멤버가 final 필드인 방식1234public class">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2021-01-30T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-31T10:38:42.614Z">
+<meta property="article:author" content="Keeseung">
+<meta property="article:tag" content="Effactive Java">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Blog Blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/01/effective-java-item-2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://mirrors89.github.io/2021/01/effective-java-item-3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&text=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&is_video=false&description=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라&body=Check out this article: https://mirrors89.github.io/2021/01/effective-java-item-3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&name=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://mirrors89.github.io/2021/01/effective-java-item-3/&t=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9D%B4%EB%9E%80"><span class="toc-number">1.</span> <span class="toc-text">싱글턴이란?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EB%A9%B4-%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0-%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88-%EC%88%98-%EC%9E%88%EB%8B%A4"><span class="toc-number">2.</span> <span class="toc-text">클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9D%84-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.</span> <span class="toc-text">싱글턴을 만드는 방식</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#public-static-%EB%A9%A4%EB%B2%84%EA%B0%80-final-%ED%95%84%EB%93%9C%EC%9D%B8-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.1.</span> <span class="toc-text">public static 멤버가 final 필드인 방식</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EC%9E%A5%EC%A0%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">장점</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%84%B0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EB%A5%BC-public-static-%EB%A9%A4%EB%B2%84%EB%A1%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.2.</span> <span class="toc-text">정적 팩터리 메서드를 public static 멤버로 제공하는 방식</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EC%9E%A5%EC%A0%90-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">장점</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%97%B4%EA%B1%B0-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EC%84%A0%EC%96%B8%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.3.</span> <span class="toc-text">열거 타입으로 선언하는 방식</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        [EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Keeseung</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-01-30T15:00:00.000Z" itemprop="datePublished">2021-01-31</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C/">개발</a> › <a class="category-link" href="/categories/%EA%B0%9C%EB%B0%9C/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Effactive-Java/" rel="tag">Effactive Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="싱글턴이란"><a href="#싱글턴이란" class="headerlink" title="싱글턴이란?"></a>싱글턴이란?</h3><ul>
+<li>인스턴스를 오직 하나만 생성할 수 있는 클래스</li>
+<li>함수와 같은 무상태(stateless) 객체나 설계상 유일해야 하는 시스템 컴포넌트 등</li>
+</ul>
+<h3 id="클래스를-싱글턴으로-만들면-테스트하기-어려워질-수-있다"><a href="#클래스를-싱글턴으로-만들면-테스트하기-어려워질-수-있다" class="headerlink" title="클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다."></a>클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다.</h3><ul>
+<li>싱글턴을 mock 구현으로 대체할 수 없기 때문</li>
+</ul>
+<h3 id="싱글턴을-만드는-방식"><a href="#싱글턴을-만드는-방식" class="headerlink" title="싱글턴을 만드는 방식"></a>싱글턴을 만드는 방식</h3><h4 id="public-static-멤버가-final-필드인-방식"><a href="#public-static-멤버가-final-필드인-방식" class="headerlink" title="public static 멤버가 final 필드인 방식"></a>public static 멤버가 final 필드인 방식</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonClass INSTANCE = <span class="keyword">new</span> SingletonClass();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonClass</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>private 생성자는 <code>SingletonClass.INSTANCE</code> 초기화 할 때 딱 한 번만 호출된다. </li>
+<li>public이나 protected 생성자가 없으므로 초기화될 때 만들어진 인스턴스가 전체 시스템에서 하나임이 보장된다</li>
+<li>다만, 리플렉션 API인 <code>AccessibleObject.setAccessible</code>을 사용해 생성자를 호출할 수 있다.<ul>
+<li>생성자를 수정해서 두번째 객체가 생성하려 때 예외를 던지도록 해 방어할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h5><ul>
+<li>해당 클래스가 싱글턴임이 API에 드러난다.</li>
+<li>간결함</li>
+</ul>
+<h4 id="정적-팩터리-메서드를-public-static-멤버로-제공하는-방식"><a href="#정적-팩터리-메서드를-public-static-멤버로-제공하는-방식" class="headerlink" title="정적 팩터리 메서드를 public static 멤버로 제공하는 방식"></a>정적 팩터리 메서드를 public static 멤버로 제공하는 방식</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonClass INSTANCE = <span class="keyword">new</span> SingletonClass();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonClass</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="장점-1"><a href="#장점-1" class="headerlink" title="장점"></a>장점</h5><ul>
+<li>API를 바꾸지 않고도 싱글턴이 아니게 변경할 수 있다.</li>
+<li>정적 팩터리를 제네릭 싱글턴 팩터리로 만들 수 있다.</li>
+<li>정적 팩터리의 메서드를 공급자(supplier)로 사용할 수 있다.<ul>
+<li>예) <code>Supplier&lt;SingletonClass&gt;</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>위 두가지 방식으로 만든 싱글턴 클래스를 직렬화하려면 readResolve 메서드를 제공해야한다.<br>이렇게 하지 않으면 역직렬할 때 마다 새로운 인스턴스가 만들어진다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> INSTANCE;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="열거-타입으로-선언하는-방식"><a href="#열거-타입으로-선언하는-방식" class="headerlink" title="열거 타입으로 선언하는 방식"></a>열거 타입으로 선언하는 방식</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonEnum</span> </span>&#123;</span><br><span class="line">    INSTANCE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>public 필드 방식과 비슷하지만, 더 간결하고, 추가 노력없이 직렬화할 수 있다.</li>
+<li>복잡한 직렬화 상황이나 리플렉션 공격에서도 제2의 인스턴스가 생기는 일을 완벽히 막아준다.</li>
+<li>대부분 상황에서는 원소가 하나뿐인 열거 타입이 싱글턴을 만드는 가장 좋은 방법이다.</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9D%B4%EB%9E%80"><span class="toc-number">1.</span> <span class="toc-text">싱글턴이란?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EB%A9%B4-%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0-%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88-%EC%88%98-%EC%9E%88%EB%8B%A4"><span class="toc-number">2.</span> <span class="toc-text">클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9D%84-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.</span> <span class="toc-text">싱글턴을 만드는 방식</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#public-static-%EB%A9%A4%EB%B2%84%EA%B0%80-final-%ED%95%84%EB%93%9C%EC%9D%B8-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.1.</span> <span class="toc-text">public static 멤버가 final 필드인 방식</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EC%9E%A5%EC%A0%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">장점</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%84%B0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EB%A5%BC-public-static-%EB%A9%A4%EB%B2%84%EB%A1%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.2.</span> <span class="toc-text">정적 팩터리 메서드를 public static 멤버로 제공하는 방식</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EC%9E%A5%EC%A0%90-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">장점</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%97%B4%EA%B1%B0-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EC%84%A0%EC%96%B8%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D"><span class="toc-number">3.3.</span> <span class="toc-text">열거 타입으로 선언하는 방식</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://mirrors89.github.io/2021/01/effective-java-item-3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&text=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&is_video=false&description=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라&body=Check out this article: https://mirrors89.github.io/2021/01/effective-java-item-3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&title=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://mirrors89.github.io/2021/01/effective-java-item-3/&name=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://mirrors89.github.io/2021/01/effective-java-item-3/&t=[EFFECTIVE JAVA] Item 3 private 생성자나 열거 타입으로 싱글턴임을 보증하라"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Keeseung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
