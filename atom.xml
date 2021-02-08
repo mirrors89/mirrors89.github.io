@@ -6,7 +6,7 @@
   <link href="https://mirrors89.github.io/atom.xml" rel="self"/>
   
   <link href="https://mirrors89.github.io/"/>
-  <updated>2021-02-03T15:08:28.120Z</updated>
+  <updated>2021-02-08T02:52:37.930Z</updated>
   <id>https://mirrors89.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>blog-test</title>
+    <link href="https://mirrors89.github.io/2021/02/blog-test/"/>
+    <id>https://mirrors89.github.io/2021/02/blog-test/</id>
+    <published>2021-02-08T02:52:18.000Z</published>
+    <updated>2021-02-08T02:52:37.930Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="데모-귀신-이상해"><a href="#데모-귀신-이상해" class="headerlink" title="데모 귀신 이상해"></a>데모 귀신 이상해</h3><p>ㅠㅠㅠㅠㅠㅠㅠㅠ</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;데모-귀신-이상해&quot;&gt;&lt;a href=&quot;#데모-귀신-이상해&quot; class=&quot;headerlink&quot; title=&quot;데모 귀신 이상해&quot;&gt;&lt;/a&gt;데모 귀신 이상해&lt;/h3&gt;&lt;p&gt;ㅠㅠㅠㅠㅠㅠㅠㅠ&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>[EFFECTIVE JAVA] Item 4 인스턴스화를 막으려거든 private 생성자를 사용하라</title>
