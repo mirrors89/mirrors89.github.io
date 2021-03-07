@@ -9,16 +9,48 @@
 
 
     <url>
-        <loc>https://mirrors89.github.io/2021/02/effective-java-item-4/</loc>
-        <lastmod>2021-02-03T15:08:28.120Z</lastmod>
+        <loc>https://mirrors89.github.io/2021/01/effective-java-item-3/</loc>
+        <lastmod>2021-03-07T11:51:48.756Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://mirrors89.github.io/2021/01/effective-java-item-3/</loc>
-        <lastmod>2021-01-31T10:38:42.614Z</lastmod>
+        <loc>https://mirrors89.github.io/2021/01/effective-java-item-2/</loc>
+        <lastmod>2021-03-07T11:50:55.169Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://mirrors89.github.io/2021/01/effective-java-item-1/</loc>
+        <lastmod>2021-03-07T11:50:31.277Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://mirrors89.github.io/2021/03/effective-java-item-5/</loc>
+        <lastmod>2021-03-07T11:49:27.905Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://mirrors89.github.io/2021/02/effective-java-item-4/</loc>
+        <lastmod>2021-03-07T11:49:22.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://mirrors89.github.io/2021/03/effective-java-item-6/</loc>
+        <lastmod>2021-03-07T11:48:41.353Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -27,22 +59,6 @@
     <url>
         <loc>https://mirrors89.github.io/2017/04/hexo-getting-started-1st/</loc>
         <lastmod>2021-01-30T06:19:15.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://mirrors89.github.io/2021/01/effective-java-item-1/</loc>
-        <lastmod>2021-01-30T06:19:15.328Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://mirrors89.github.io/2021/01/effective-java-item-2/</loc>
-        <lastmod>2021-01-30T06:19:15.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
