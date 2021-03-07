@@ -11,16 +11,16 @@ categories:
 - Java
 ---
 
-### 싱글턴이란?
+## 싱글턴이란?
 - 인스턴스를 오직 하나만 생성할 수 있는 클래스
 - 함수와 같은 무상태(stateless) 객체나 설계상 유일해야 하는 시스템 컴포넌트 등
 
-### 클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다.
+## 클래스를 싱글턴으로 만들면 테스트하기 어려워질 수 있다.
 - 싱글턴을 mock 구현으로 대체할 수 없기 때문
 
-### 싱글턴을 만드는 방식
+## 싱글턴을 만드는 방식
 
-#### public static 멤버가 final 필드인 방식
+### public static 멤버가 final 필드인 방식
 ```java
 public class SingletonClass {
     public static final SingletonClass INSTANCE = new SingletonClass();
@@ -36,7 +36,7 @@ public class SingletonClass {
 - 해당 클래스가 싱글턴임이 API에 드러난다.
 - 간결함
 
-#### 정적 팩터리 메서드를 public static 멤버로 제공하는 방식
+### 정적 팩터리 메서드를 public static 멤버로 제공하는 방식
 ```java
 public class SingletonClass {
     private static final SingletonClass INSTANCE = new SingletonClass();
@@ -63,7 +63,7 @@ public class SingletonClass {
 > ```
 
 
-#### 열거 타입으로 선언하는 방식
+### 열거 타입으로 선언하는 방식
 ```java
 public enum SingletonEnum {
     INSTANCE
