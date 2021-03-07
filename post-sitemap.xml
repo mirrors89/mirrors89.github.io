@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://mirrors89.github.io/2021/03/effective-java-item-6/</loc>
+        <lastmod>2021-03-07T12:00:30.338Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://mirrors89.github.io/2021/01/effective-java-item-3/</loc>
         <lastmod>2021-03-07T11:51:48.756Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -43,14 +51,6 @@
     <url>
         <loc>https://mirrors89.github.io/2021/02/effective-java-item-4/</loc>
         <lastmod>2021-03-07T11:49:22.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://mirrors89.github.io/2021/03/effective-java-item-6/</loc>
-        <lastmod>2021-03-07T11:48:41.353Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
