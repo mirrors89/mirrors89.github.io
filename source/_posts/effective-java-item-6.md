@@ -1,5 +1,5 @@
 ---
-title: "[EFFECTIVE JAVA] Item 6 불필요헌 객체 생성을 피하라"
+title: "[EFFECTIVE JAVA] Item 6 불필요한 객체 생성을 피하라"
 catalog: true
 date: 2021-03-08
 subtitle: ""
